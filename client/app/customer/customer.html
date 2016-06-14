@@ -1,0 +1,53 @@
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+ <nav style="margin-bottom: 0px; color: navy; position: fixed; margin-left: 0px; padding-top: 2%; padding-bottom: 2%; letter-spacing: 5px; margin-top: 0%; z-index: 0;" class="navbar navbar-default col-xs-12">
+      <div class="container">
+        <div class="navbar-header">
+          <h1>Our Library</h1>
+        </div>
+      </div>
+ </nav>
+    <!-- Middle container -->
+  <div style="padding-top: 12%;" class="container-fluid bg-2 text-center">
+      <h3>Welcome to The Customer page!</h3>
+      <p>You may borrow books!</p> 
+  </div>
+  
+  <div class="container-fluid bg-3 text-left" ng-app='libraryApp' style="margin-left: 0%; margin-right: 0%;">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            
+            <th>Title</th>
+            <th>Publisher</th>
+            <th>Author</th>
+            <th>Date Added</th>
+            <th>Book Count</th>
+            <th>-</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr ng-repeat="book in $ctrl.awesomeBooks">
+            
+            <td>{{book.title}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.author}}</td>
+            <td><div>{{book.date_added}}</div></td>
+            <td>{{book.count}}</td>
+            
+            <td>
+              <button type="button" class="btn btn-warning" ng-click="$ctrl.borrowBook(book)">
+                 <span class="glyphicon glyphicon-minus"></span>
+                  Borrow
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    
+  </div>
+  

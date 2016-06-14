@@ -1,0 +1,97 @@
+<link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+ <nav style="margin-bottom: 0px; color: navy; position: fixed; margin-left: 0px; padding-top: 2%; padding-bottom: 2%; letter-spacing: 5px; margin-top: 0%; z-index: 0;" class="navbar navbar-default col-xs-12">
+      <div class="container">
+        <div class="navbar-header">
+          <h1>Our Library</h1>
+        </div>
+      </div>
+ </nav>
+    <!-- Middle container -->
+  <div style="padding-top: 12%;" class="container-fluid bg-2 text-center">
+      <h3>Welcome to The Librarian page!</h3>
+      <p>You may add, edit or delete book titles</p> 
+  </div>
+  
+  <div class="container-fluid bg-3 text-left" ng-app='libraryApp' style="margin-left: 0%; margin-right: 0%;">
+    
+    <div style="margin-left: 10%; margin-right: 10%; align-self: center;"> To Edit, Enter updated details in the update: row of the table, and then click on the update button next to the book which has to be updated.</div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Title</th>
+            <th>Publisher</th>
+            <th>Author</th>
+            <th>Date Added</th>
+            <th>Book Count</th>
+            <th>-</th>
+            <th>-</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Add:</td>
+            <td><input type="text" class="form-control" placeholder="Title" ng-model="$ctrl.newBook.title"></td>
+            <td><input type="text" class="form-control" placeholder="Publisher" ng-model="$ctrl.newBook.pub"></td>
+            <td><input type="text" class="form-control" placeholder="Author" ng-model="$ctrl.newBook.author"></td>
+            <td><input type="date" class="form-control" placeholder="dd/mm/yyyy(default today)" ng-model="$ctrl.newBook.date"></td>
+            <td><input type="number" class="form-control" placeholder="Count" ng-model="$ctrl.newBook.count"></td>
+            <td>
+              <button type="button" class="btn btn-success" ng-click="$ctrl.addBook()">
+                 <span class="glyphicon glyphicon-plus"></span>
+                  Add
+              </button>
+            </td>
+            <td>-</td>
+          </tr>
+          <tr>
+            <td>Update:</td>
+            <td><input type="text" class="form-control" placeholder="Title" ng-model="$ctrl.upBook.title"></td>
+            <td><input type="text" class="form-control" placeholder="Publisher" ng-model="$ctrl.upBook.pub"></td>
+            <td><input type="text" class="form-control" placeholder="Author" ng-model="$ctrl.upBook.author"></td>
+            <td><input type="date" class="form-control" placeholder="Date Added(default today)" ng-model="$ctrl.upBook.date"></td>
+            <td><input type="number" class="form-control" placeholder="Count" ng-model="$ctrl.upBook.count"></td>
+            <td>-</td>
+            <td>-</td>
+          </tr>
+          <tr ng-repeat="book in $ctrl.awesomeBooks">
+            <td>  </td>
+            <td>{{book.title}}</td>
+            <td>{{book.publisher}}</td>
+            <td>{{book.author}}</td>
+            <td><div value='javascript:convertDate({{book.date_added}})'>{{book.date_added}}</div></td>
+            <td>{{book.count}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" ng-click="$ctrl.editBook(book)">
+                 <span class="glyphicon glyphicon-pencil"></span>
+                  Edit
+              </button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-warning" ng-click="$ctrl.deleteBook(book)">
+                 <span class="glyphicon glyphicon-minus"></span>
+                  Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+         // set an element
+         function convertDate(inputFormat) {
+            function pad(s) { return (s < 10) ? '0' + s : s; }
+            var d = new Date(inputFormat);
+            return [pad(d.getDate()), pad(d.getMonth()+1), d.getFullYear()].join('/');
+          }
+
+         
+
+    });
+</script>
